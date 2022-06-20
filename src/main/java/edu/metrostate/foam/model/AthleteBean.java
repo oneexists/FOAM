@@ -1,6 +1,3 @@
-/**
- * 
- */
 package edu.metrostate.foam.model;
 
 import java.time.LocalDate;
@@ -14,10 +11,6 @@ import edu.metrostate.ics425.foam.Athlete;
  *
  */
 public class AthleteBean implements Athlete, Comparable<Athlete> {
-
-	/**
-	 * Version of the bean
-	 */
 	private static final long serialVersionUID = 202110003L;
 	private static final Comparator<Athlete> ATHLETE_COMPARATOR = Comparator.comparing(Athlete::getNationalID);
 	private String nationalID;
@@ -38,6 +31,20 @@ public class AthleteBean implements Athlete, Comparable<Athlete> {
 		this.nationalID = nationalID;
 		this.firstName = firstName;
 		this.lastName = lastName;
+	}
+	
+	/**
+	 * @return age of the athlete
+	 */
+	public Integer getAge() {
+		return dateOfBirth == null || dateOfBirth.isAfter(OLYMPIC_START_DATE) ? null : Period.between(dateOfBirth, OLYMPIC_START_DATE).getYears();
+	}
+	
+	/**
+	 * @return eligibility of the athlete
+	 */
+	public boolean isEligible() {
+		return getAge() == null || getAge() < 16 ? false : true;
 	}
 	
 	@Override
@@ -126,20 +133,6 @@ public class AthleteBean implements Athlete, Comparable<Athlete> {
 		if (this.nationalID == null) {
 			this.nationalID = nationalID;
 		}
-	}
-	
-	/**
-	 * @return age of the athlete
-	 */
-	public Integer getAge() {
-		return dateOfBirth == null || dateOfBirth.isAfter(OLYMPIC_START_DATE) ? null : Period.between(dateOfBirth, OLYMPIC_START_DATE).getYears();
-	}
-	
-	/**
-	 * @return eligibility of the athlete
-	 */
-	public boolean isEligible() {
-		return getAge() == null || getAge() < 16 ? false : true;
 	}
 
 	@Override
