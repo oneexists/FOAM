@@ -1,9 +1,13 @@
 # FOAM
+(Freedonia Olympic Athlete Management System)
 
-Maven JEE Web Project for Client Server Applications Course: Freedonia Olympic Athlete Management System
+Maven JEE Web Project for Client Server Applications Course
 
 ### Functional Requirements
-- view, create, edit, and delete athletes from the roster
-- custom error page
+
+- Performs CRUD (create, read, update and delete) operations
+- Custom error page
 - JUnit tests to validate boundary cases
-- utilize ConnectionPool to manage athlete roster database
+- Utilizes a ConnectionPool to manage access to the athlete roster database
+
+![Athlete Roster](https://github.com/oneexists/FOAM/blob/main/img/roster.png)
